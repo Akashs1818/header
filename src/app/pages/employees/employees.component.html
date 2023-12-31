@@ -1,0 +1,74 @@
+
+<div class="container mt-5">
+    <h2>List of Employees</h2>
+   <button (click)="clickAddEmployee()" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary mt-5 mb-3">Add Employee</button>
+    <table class="table">
+        <thead>
+           <th>ID</th>
+           <th>Name</th>
+           <th>Email</th>
+           <th>Phone</th>
+
+        </thead>
+        <tbody>
+            <tr *ngFor="let employee of employees">
+                <td>{{employee.id }}</td>
+                <td>{{employee.name }}</td>
+                <td>{{employee.email }}</td>
+                <td>{{employee.phone }}</td>
+                <td><button  type="button" (click)="editData(employee.id)"  data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-secondary">edit</button></td>
+                <td><button (click)="ondelete(employee.id)" class="btn btn-danger">delete</button></td>
+                
+
+
+            </tr>
+        </tbody>
+
+    </table>
+  
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Employee Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          .<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+            <div class="form-group" class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Id</label>
+              <input type="text" class="form-control"  aria-describedby="emailHelp" [(ngModel)]="employee.id" name="id">
+             
+            </div>
+            <div class="form-group" class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Name</label>
+              <input type="text" class="form-control" [(ngModel)]="employee.name" name="name">
+            </div>
+            <div class="form-group" class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Email</label>
+            <input type="text" class="form-control" [(ngModel)]="employee.email" name="email">
+             </div>
+             <div class="form-group" class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Phone</label>
+                <input type="text" class="form-control"  [(ngModel)]="employee.phone" name="phone">
+                 </div>
+                 <div class="form-group" class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    
+                    <button  type="submit"  class="btn btn-primary">Add</button>
+                    <button type="button"  (click)="onUpdate(employee.id)" class="btn btn-primary">update</button>
+                    
+                 </div>
+           
+          </form>..
+       
+    </div>
+  </div>
+</div>
+
+ 
+ 
+
+   
